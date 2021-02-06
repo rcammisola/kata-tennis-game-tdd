@@ -1,3 +1,5 @@
+import pytest
+
 from tennis_game import TennisGame
 
 
@@ -7,34 +9,23 @@ def test_score_is_love_all_at_start_of_game():
     assert game.score() == "Love-all"
 
 
-def test_score_fifteen_love_when_player_1_scores_first_point():
+@pytest.mark.parametrize(
+    "player1_score, player2_score, expected_score",
+    [
+        (1, 0, "Fifteen-Love"),
+        (0, 1, "Love-Fifteen"),
+        (3, 1, "Forty-Fifteen"),
+    ]
+)
+def test_standard_in_game_scoring_scenarios(player1_score, player2_score, expected_score):
     player1_name = "Federer"
     player2_name = "Nadal"
     game = TennisGame(player1_name, player2_name)
 
-    game.won_point(player1_name)
+    for point in range(max(player1_score, player2_score)):
+        if point < player1_score:
+            game.won_point(player1_name)
+        if point < player2_score:
+            game.won_point(player2_name)
 
-    assert game.score() == "Fifteen-Love"
-
-
-def test_score_love_fifteen_when_player_2_scores_first_point():
-    player1_name = "Federer"
-    player2_name = "Nadal"
-    game = TennisGame(player1_name, player2_name)
-
-    game.won_point(player2_name)
-
-    assert game.score() == "Love-Fifteen"
-
-
-def test_score_forty_fifteen_when_players_have_scored_3_1():
-    player1_name = "Federer"
-    player2_name = "Nadal"
-    game = TennisGame(player1_name, player2_name)
-
-    game.won_point(player1_name)
-    game.won_point(player1_name)
-    game.won_point(player1_name)
-    game.won_point(player2_name)
-
-    assert game.score() == "Forty-Fifteen"
+    assert game.score() == expected_score
