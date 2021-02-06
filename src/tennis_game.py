@@ -6,7 +6,7 @@ class TennisGame:
         self.player2_name = player2_name
 
     def score(self):
-        pass
+        return "Love-all"
 
     def won_point(self, player_name):
         pass
