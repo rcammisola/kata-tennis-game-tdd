@@ -29,7 +29,7 @@ class TennisGame:
         return game_score
 
     def _tied_game_score(self):
-        if self.player1_points == 3:
+        if self.player1_points >= 3:
             game_score = "Deuce"
         else:
             tied_score = self.point_map[self.player1_points]
