@@ -30,6 +30,8 @@ def test_tied_game_scenarios(player1_score, player2_score, expected_score):
     [
         (1, 0, "Fifteen-Love"),
         (0, 1, "Love-Fifteen"),
+        (2, 1, "Thirty-Fifteen"),
+        (1, 2, "Fifteen-Thirty"),
         (3, 1, "Forty-Fifteen"),
     ]
 )
@@ -44,6 +46,7 @@ def test_standard_in_game_scoring_scenarios(player1_score, player2_score, expect
     [
         (4, 3, "Advantage Federer"),
         (3, 4, "Advantage Nadal"),
+        (9, 8, "Advantage Federer"),
         (7, 8, "Advantage Nadal"),
     ]
 )
@@ -57,6 +60,8 @@ def test_score_is_advantage_when_player_wins_point_at_deuce(player1_score, playe
     "player1_score, player2_score, expected_score",
     [
         (4, 2, "Federer Won"),
+        (4, 0, "Federer Won"),
+        (9, 11, "Nadal Won"),
     ]
 )
 def test_score_is_player_won_when_over_forty_points_and_leads_by_at_least_two_scores(player1_score,
