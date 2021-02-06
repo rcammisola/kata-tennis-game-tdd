@@ -52,3 +52,23 @@ def test_standard_in_game_scoring_scenarios(player1_score, player2_score, expect
             game.won_point(player2_name)
 
     assert game.score() == expected_score
+
+
+@pytest.mark.parametrize(
+    "player1_score, player2_score, expected_score",
+    [
+        (4, 3, "Advantage Federer"),
+    ]
+)
+def test_score_is_advantage_when_player_wins_point_at_deuce(player1_score, player2_score, expected_score):
+    player1_name = "Federer"
+    player2_name = "Nadal"
+    game = TennisGame(player1_name, player2_name)
+
+    for point in range(max(player1_score, player2_score)):
+        if point < player1_score:
+            game.won_point(player1_name)
+        if point < player2_score:
+            game.won_point(player2_name)
+
+    assert game.score() == expected_score
