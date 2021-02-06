@@ -21,7 +21,7 @@ class TennisGame:
         }
 
     def score(self):
-        if (self.player1_points > POINTS_FORTY or self.player2_points > POINTS_FORTY) and abs(self.player1_points-self.player2_points) >= 2:
+        if (self.player1_points > POINTS_FORTY or self.player2_points > POINTS_FORTY) and self._lead_is_at_least(2):
             game_score = f"{self._currently_leading_player()} Won"
 
         elif self.player1_points == self.player2_points:
@@ -37,6 +37,9 @@ class TennisGame:
             game_score = f"{player1_score}-{player2_score}"
 
         return game_score
+
+    def _lead_is_at_least(self, lead):
+        return abs(self.player1_points-self.player2_points) >= lead
 
     def _tied_game_score(self):
         if self.player1_points >= POINTS_FORTY:
