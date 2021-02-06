@@ -17,12 +17,14 @@ class TennisGame:
     def score(self):
         if self.player1_points == self.player2_points:
             tied_score = self.point_map[self.player1_points]
-            return f"{tied_score}-all"
+            game_score = f"{tied_score}-all"
         else:
             player1_score = self.point_map[self.player1_points]
             player2_score = self.point_map[self.player2_points]
 
-            return f"{player1_score}-{player2_score}"
+            game_score = f"{player1_score}-{player2_score}"
+
+        return game_score
 
     def won_point(self, player_name):
         if player_name == self.player1_name:
