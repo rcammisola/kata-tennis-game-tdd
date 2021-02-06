@@ -21,11 +21,15 @@ class TennisGame:
         }
 
     def score(self):
-        if self.player1_points == self.player2_points:
+        if (self.player1_points > POINTS_FORTY or self.player2_points > POINTS_FORTY) and abs(self.player1_points-self.player2_points) >= 2:
+            game_score = f"{self._currently_leading_player()} Won"
+
+        elif self.player1_points == self.player2_points:
             game_score = self._tied_game_score()
 
         elif self.player1_points > POINTS_THIRTY and self.player2_points > POINTS_THIRTY:
             game_score = f"Advantage {self._currently_leading_player()}"
+
         else:
             player1_score = self.point_map[self.player1_points]
             player2_score = self.point_map[self.player2_points]
