@@ -1,5 +1,11 @@
 
 
+POINTS_LOVE = 0
+POINTS_FIFTEEN = 1
+POINTS_THIRTY = 2
+POINTS_FORTY = 3
+
+
 class TennisGame:
     def __init__(self, player1_name, player2_name):
         self.player1_name = player1_name
@@ -8,17 +14,17 @@ class TennisGame:
         self.player2_points = 0
 
         self.point_map = {
-            0: "Love",
-            1: "Fifteen",
-            2: "Thirty",
-            3: "Forty",
+            POINTS_LOVE: "Love",
+            POINTS_FIFTEEN: "Fifteen",
+            POINTS_THIRTY: "Thirty",
+            POINTS_FORTY: "Forty",
         }
 
     def score(self):
         if self.player1_points == self.player2_points:
             game_score = self._tied_game_score()
 
-        elif self.player1_points > 2 and self.player2_points > 2:
+        elif self.player1_points > POINTS_THIRTY and self.player2_points > POINTS_THIRTY:
             game_score = f"Advantage {self._currently_leading_player()}"
         else:
             player1_score = self.point_map[self.player1_points]
@@ -29,7 +35,7 @@ class TennisGame:
         return game_score
 
     def _tied_game_score(self):
-        if self.player1_points >= 3:
+        if self.player1_points >= POINTS_FORTY:
             game_score = "Deuce"
         else:
             tied_score = self.point_map[self.player1_points]
