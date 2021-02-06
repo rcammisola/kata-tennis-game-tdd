@@ -15,6 +15,7 @@ def test_score_is_love_all_at_start_of_game():
         (0, 0, "Love-all"),
         (1, 1, "Fifteen-all"),
         (2, 2, "Thirty-all"),
+        (3, 3, "Deuce"),
     ]
 )
 def test_tied_game_scenarios(player1_score, player2_score, expected_score):
