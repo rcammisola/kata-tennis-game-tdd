@@ -22,8 +22,7 @@ class TennisGame:
                 tied_score = self.point_map[self.player1_points]
                 game_score = f"{tied_score}-all"
         elif self.player1_points > 2 and self.player2_points > 2:
-            leading_player = self.player1_name if self.player1_points > self.player2_points else self.player2_name
-            game_score = f"Advantage {leading_player}"
+            game_score = f"Advantage {self._currently_leading_player()}"
         else:
             player1_score = self.point_map[self.player1_points]
             player2_score = self.point_map[self.player2_points]
@@ -31,6 +30,9 @@ class TennisGame:
             game_score = f"{player1_score}-{player2_score}"
 
         return game_score
+
+    def _currently_leading_player(self):
+        return self.player1_name if self.player1_points > self.player2_points else self.player2_name
 
     def won_point(self, player_name):
         if player_name == self.player1_name:
