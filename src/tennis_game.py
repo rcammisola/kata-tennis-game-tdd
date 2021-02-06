@@ -16,7 +16,8 @@ class TennisGame:
 
     def score(self):
         if self.player1_points == self.player2_points:
-            return "Love-all"
+            tied_score = self.point_map[self.player1_points]
+            return f"{tied_score}-all"
         else:
             player1_score = self.point_map[self.player1_points]
             player2_score = self.point_map[self.player2_points]
