@@ -75,3 +75,25 @@ def test_score_is_advantage_when_player_wins_point_at_deuce(player1_score, playe
             game.won_point(player2_name)
 
     assert game.score() == expected_score
+
+
+@pytest.mark.parametrize(
+    "player1_score, player2_score, expected_score",
+    [
+        (4, 2, "Federer Won"),
+    ]
+)
+def test_score_is_player_won_when_over_forty_points_and_leads_by_at_least_two_scores(player1_score,
+                                                                                     player2_score,
+                                                                                     expected_score):
+    player1_name = "Federer"
+    player2_name = "Nadal"
+    game = TennisGame(player1_name, player2_name)
+
+    for point in range(max(player1_score, player2_score)):
+        if point < player1_score:
+            game.won_point(player1_name)
+        if point < player2_score:
+            game.won_point(player2_name)
+
+    assert game.score() == expected_score
