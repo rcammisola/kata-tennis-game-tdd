@@ -58,6 +58,7 @@ def test_standard_in_game_scoring_scenarios(player1_score, player2_score, expect
     "player1_score, player2_score, expected_score",
     [
         (4, 3, "Advantage Federer"),
+        (3, 4, "Advantage Nadal"),
     ]
 )
 def test_score_is_advantage_when_player_wins_point_at_deuce(player1_score, player2_score, expected_score):
