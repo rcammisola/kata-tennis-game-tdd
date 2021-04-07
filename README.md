@@ -1,10 +1,10 @@
-# AI Automated Testing Workshop
+# Tennis Game TDD Kata
 
 Code repository to be used as part of the testing workshop. The workshop is based on the TennisGame code kata and 
 focuses on TDD to try to encourage people to write tests as well as the refactoring path to show the value of having 
 tests in place.
 
-## Tennis Game
+## Desciption
 
 Oh No! You have tripped over the power cord of the Wimbledon Scoreboard during the Men's Final and all of the numbers have reset to zeroes.
 
